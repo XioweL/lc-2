@@ -3,7 +3,7 @@ package routes
 import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	//internal "live-code-2-XioweL/internal/middleware"
+	internal "live-code-2-XioweL/internal/middleware"
 	handler "live-code-2-XioweL/internal/userhandler"
 )
 
@@ -17,10 +17,10 @@ func SetupRoutes() *echo.Echo {
 	e.POST("/users/login", handler.Login)
 	e.POST("/users/register", handler.Register)
 
-	//// Booking
-	//g := e.Group("/bookings")
-	//g.Use(internal.CustomJwtMiddleware)
-	//g.GET("", handler.GetBookings)
+	// Booking
+	g := e.Group("/bookings")
+	g.Use(internal.CustomJwtMiddleware)
+	g.GET("", handler.GetBookings)
 	//g.GET("/unpaid", handler.GetUnpaidBook)
 	//
 	//// Tours

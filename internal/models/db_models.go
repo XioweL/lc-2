@@ -15,3 +15,10 @@ type Customer struct {
 	PhoneNumber string `json:"phone_number" validate:"required"`
 	Address     string `json:"address" validate:"required"`
 }
+
+//type Bookings struct {
+//	BookingID     int    `json:"booking_id" gorm:"primaryKey;column:booking_id"`
+//	TourName      string `json:"tour_name" gorm:"not null"`
+//	BookingDate   string `json:"booking_date" gorm:"not null"`
+//	BookingStatus string `json:"booking_status" gorm:"not null"`
+//}
