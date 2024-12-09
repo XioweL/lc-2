@@ -21,7 +21,7 @@ func Register(c echo.Context) error {
 		Email:        req.Email,
 		PasswordHash: string(hashedPassword),
 	}
-	if err := user.Create(&user).Error; err != nil {
+	if err := config.DB.Create(&user).Error; err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": "register failed"})
 	}
 
