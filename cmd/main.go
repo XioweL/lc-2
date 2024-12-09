@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/joho/godotenv"
 	"live-code-2-XioweL/config"
+	"live-code-2-XioweL/internal/routes"
 	"log"
 	"os"
 	"path/filepath"
@@ -40,7 +41,7 @@ func main() {
 	config.InitDB()
 	defer config.CloseDB()
 
-	// Setup rute dan jalankan server
-	//e := routes.SetupRoutes()
-	//e.Logger.Fatal(e.Start(":8080"))
+	//Setup rute dan jalankan server
+	e := routes.SetupRoutes()
+	e.Logger.Fatal(e.Start(":8080"))
 }

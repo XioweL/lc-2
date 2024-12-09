@@ -7,11 +7,11 @@ type User struct {
 	Customer     Customer `gorm:"foreignKey:UserID" json:"customer,omitempty"`
 }
 type Customer struct {
-	ID          int    `json:"customer_id" gorm:"primaryKey;column:customer_id"`
-	UserID      int    `json:"user_id" gorm:"not null"`
-	Name        string `json:"name" validate:"required"`
-	Email       string `json:"email" validate:"required,email"`
-	Password    string `json:"password" validate:"required,min=8"`
+	ID     int    `json:"customer_id" gorm:"primaryKey;column:customer_id"`
+	UserID int    `json:"user_id" gorm:"not null"`
+	Name   string `json:"name" validate:"required"`
+	Email  string `json:"email" validate:"required,email"`
+	//Password    string `json:"password" validate:"required,min=8"`
 	PhoneNumber string `json:"phone_number" validate:"required"`
 	Address     string `json:"address" validate:"required"`
 }

@@ -8,6 +8,7 @@ import (
 	"gorm.io/gorm"
 	"live-code-2-XioweL/config"
 	internal "live-code-2-XioweL/internal/models"
+	"log"
 	"net/http"
 	"time"
 )
@@ -15,6 +16,7 @@ import (
 func Login(c echo.Context) error {
 	var req internal.LoginRequest
 	if err := c.Bind(&req); err != nil {
+		log.Println(err)
 		return c.JSON(http.StatusBadRequest, map[string]string{"message": "Invalid Request"})
 	}
 

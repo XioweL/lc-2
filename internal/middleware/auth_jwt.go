@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"live-code-2-XioweL/config"
 	"net/http"
 	"strings"
 
@@ -25,7 +26,8 @@ func CustomJwtMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 				return nil, echo.NewHTTPError(http.StatusUnauthorized, "Unexpected signing method")
 			}
-			return []byte("Secret_Key"), nil
+			return config.JwtSecret, nil
+			//return []byte("Secret_Key"), nil
 		})
 
 		if err != nil || !token.Valid {
