@@ -1,7 +1,9 @@
 package middleware
 
 import (
+	"live-code-2-XioweL/common/constants"
 	"live-code-2-XioweL/config"
+	"live-code-2-XioweL/internal/models"
 	"net/http"
 	"strings"
 
@@ -35,7 +37,15 @@ func CustomJwtMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 		}
 
 		if claims, ok := token.Claims.(jwt.MapClaims); ok {
-			c.Set("user", claims)
+			actor := models.CustomerData{
+				ID:          int(claims["id"].(float64)),
+				UserID:      int(claims["user_id"].(float64)),
+				Name:        claims["name"].(string),
+				Email:       claims["email"].(string),
+				PhoneNumber: claims["phone_number"].(string),
+			}
+
+			c.Set(constants.ActorUserContext, actor)
 		}
 
 		return next(c)

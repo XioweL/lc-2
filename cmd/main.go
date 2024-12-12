@@ -42,6 +42,6 @@ func main() {
 	defer config.CloseDB()
 
 	//Setup rute dan jalankan server
-	e := routes.SetupRoutes()
+	e := routes.SetupRoutes(config.DB)
 	e.Logger.Fatal(e.Start(":8080"))
 }
